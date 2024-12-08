@@ -48,7 +48,6 @@ const downTemplate = async (template, projectName, tag) => {
   let status;
 
   try {
-    console.log(`正在下载 ZIP 文件：${project}`);
     // 下载模板
     const response = await axios({
       url: project,
@@ -89,8 +88,11 @@ const downTemplate = async (template, projectName, tag) => {
 
     status = true;
   } catch (error) {
-    console.error(error);
     status = false;
+    if (fs.existsSync(targetPath)) {
+      fs.rmSync(targetPath, { recursive: true }); // 删除下载的文件
+    }
+    throw error;
   }
 
   return status;

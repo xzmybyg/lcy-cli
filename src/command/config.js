@@ -3,7 +3,9 @@ const path = require("path");
 
 const configFilePath = path.resolve(__dirname, "../config.json");
 
-module.exports = (action, key, value) => {
+module.exports = (argv, options) => {
+  const [action, key, value] = argv;
+
   if (!fs.existsSync(configFilePath)) {
     fs.writeFileSync(configFilePath, JSON.stringify({}));
   }

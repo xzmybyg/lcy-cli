@@ -1,4 +1,5 @@
 {
   "source": "github",
-  "organization": "lcy-cli-template"
+  "organization": "lcy-cli-template",
+  "timeout": "30000"
 }
